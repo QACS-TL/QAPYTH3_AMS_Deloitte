@@ -2,3 +2,15 @@
 Webex meeting recording: Python 3 Programming-2026/03/31 1600-1
 Recording link: https://qa-learning.webex.com/qa-learning/ldr.php?RCID=4096b318e232451021e97b336de46ea0
 
+08 Functions
+Webex meeting recording: Python 3 Programming-20260401 1527-1
+Recording link: https://qa-learning.webex.com/qa-learning/ldr.php?RCID=96cdbb5dd2bd5435cd042e336c0f3e23
+
+09 Advanced Collections
+Webex meeting recording: Python 3 Programming-20260401 1527-2
+Recording link: https://qa-learning.webex.com/qa-learning/ldr.php?RCID=c08ceccf846d05e0e16ad56640cbce79
+
+10 Modules and Packages
+Webex meeting recording: Python 3 Programming-20260401 1527-3
+Recording link: https://qa-learning.webex.com/qa-learning/ldr.php?RCID=eb02d4b2000bc791b4a1cab03d132d3c
+
