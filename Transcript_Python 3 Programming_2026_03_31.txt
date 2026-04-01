@@ -1,0 +1,362 @@
+Overview
+The meeting, led by Pete Behague, focuses on comprehensive file handling techniques in Python, covering reading, writing, and managing both text and binary files. Pete explains fundamental concepts such as file opening modes, buffering, and the importance of closing files to prevent locking issues, especially in networked environments. He demonstrates reading files line by line, using context managers ('with' statement) for automatic file closure, and differentiates between overwriting and appending data to files.
+The discussion extends to advanced topics like binary file operations, standard input/output streams, and file locking mechanisms. Pete clarifies the concept of random access in files, emphasizing structured data and indexing to enable efficient data retrieval. He introduces pickling and shelving as methods for serializing and persisting complex Python objects, highlighting their practical applications in saving program state. Compression techniques using modules like gzip are briefly mentioned as a way to reduce storage space for pickled data.
+In response to participant questions, Pete advises focusing on conceptual understanding rather than memorizing syntax, encouraging the use of AI and online resources for coding help. He underscores the importance of developing the right vocabulary to effectively interact with AI tools for code generation and review. The session concludes with reassurances about the learning curve, emphasizing that proficiency develops over time and the course aims to build a solid conceptual foundation.
+
+
+Detailed Summary
+File Handling Basics
+The discussion begins with an overview of file handling in Python, emphasizing the importance of reading from and writing to files, both text and binary. The speaker explains the concept of streams as data sources and destinations, and highlights the necessity of properly opening and closing files to avoid locking issues, especially in networked environments.
+Pete Behague explains that files must be opened for reading or writing and closed to prevent locking issues.
+He emphasizes that forgetting to close a file can cause other programs to fail due to locked access.
+Opening files can be done with modes like read (default), write, append, and read/write combinations.
+Buffering and encoding options are available when opening files, but often defaults suffice.
+Reading from Files
+The speaker demonstrates various methods to read data from text files, including reading entire files, reading fixed-size chunks, and reading line by line. He explains the behavior of the read and readline methods, the importance of handling new line characters, and the use of loops to process files efficiently.
+Pete Behague shows how to read the entire file or a specified number of characters or bytes.
+He explains that readline reads up to the next newline character, returning one line at a time.
+Using a for loop to iterate over a file object is an efficient way to read lines sequentially.
+He warns about double spacing when printing lines due to newline characters in the file and the print function's default behavior.
+File Closing and Context Managers
+The importance of closing files is reiterated, with a focus on Python's 'with' statement as a context manager that automatically handles file closure. The speaker compares this approach to using try-finally blocks for guaranteed closure, highlighting the 'with' statement as a best practice for file operations.
+Pete Behague recommends using the 'with' statement to open files, which ensures automatic closure.
+He explains that the 'with' statement is syntactic sugar for a try-finally block that closes the file regardless of errors.
+Explicitly closing files is good practice to avoid resource leaks and locking issues.
+The 'with' statement reduces the burden on developers to remember to close files manually.
+Writing and Appending to Files
+The session covers writing data to files, including overwriting existing content and appending new data. The speaker demonstrates how opening a file in write mode clears its contents, while append mode adds data to the end. He also discusses flushing buffers to ensure data is written promptly.
+Opening a file in write mode ('w') overwrites existing content, which can lead to data loss if not careful.
+Append mode ('a') allows adding data to the end of a file without overwriting.
+Flushing the write buffer can be done explicitly but is usually handled automatically when closing the file.
+Proper mode selection is critical to preserving or updating file contents as intended.
+Binary File Operations
+The speaker introduces binary mode for reading and writing files, which deals with bytes rather than text characters. He explains encoding strings to bytes before writing and decoding bytes after reading. The challenges of viewing binary data in text editors are noted.
+Binary mode ('b') reads and writes raw bytes instead of text characters.
+Strings must be encoded to bytes before writing in binary mode and decoded after reading.
+Binary files are useful for non-text data and precise control over file contents.
+Viewing binary files in text editors can be confusing due to encoding interpretations.
+Standard Input and Output Streams
+The concept of standard input and output streams is briefly discussed, highlighting that these streams can be treated similarly to file streams. The console acts as the default destination for output and source for input, enabling reading from and writing to the console using file-like operations.
+Standard input and output are streams similar to file streams.
+By default, standard output is the console, and standard input is the keyboard.
+Python allows reading from and writing to these streams using file-like methods.
+This abstraction unifies handling of files and console I/O.
+File Locking and Concurrency
+The speaker touches on file locking mechanisms, particularly in Windows environments, to prevent concurrent access conflicts. Locking a file restricts other processes from reading or writing until the lock is released, which is important in multi-user or networked scenarios.
+File locking prevents other processes from accessing a file while it is open.
+Locking is especially relevant in networked or multi-user environments.
+Properly closing files releases locks and allows others to access the file.
+File locking behavior varies across operating systems.
+Random Access in Files
+Random access is explained as a controlled method of reading and writing at specific positions within a file. The speaker clarifies that random access is not truly random but relies on structured data and calculations to locate data segments. Techniques like fixed-length records and indexing are used to facilitate this.
+Random access involves calculating positions to read or write specific data segments.
+Files can be structured with fixed-length records to simplify position calculations.
+The 'tell' method returns the current cursor position in the file.
+The 'seek' method moves the cursor to a specified position for subsequent read/write operations.
+An index dictionary can map keys to file positions for efficient data retrieval.
+Pickling for Object Persistence
+Pickling is introduced as a method to serialize complex Python objects to files for later retrieval, preserving their structure and type. The speaker demonstrates pickling dictionaries to binary files and loading them back, emphasizing its usefulness for saving program state.
+Pickling serializes Python objects to binary files for persistence.
+It preserves the object's structure and type, enabling easy restoration.
+The 'pickle' module provides 'dump' and 'load' methods for writing and reading pickled data.
+Pickle files are not human-readable and contain compressed data.
+Pickling is useful for saving program state between sessions.
+Shelving Multiple Objects
+Shelving is described as an extension of pickling that allows storing multiple objects in a single file using a dictionary-like interface. The speaker shows how to store and retrieve multiple dictionaries by key, facilitating organized persistence of related data.
+Shelving stores multiple pickled objects in a single file with dictionary-like access.
+The 'shelve' module provides this functionality, allowing keys to access stored objects.
+It simplifies managing multiple persistent objects without manual serialization.
+Shelving is useful for applications needing to save various data sets together.
+Compression with Pickling
+The session briefly covers compressing pickled data using modules like gzip to reduce file size. The speaker explains that pickling and compression can be combined to efficiently store large objects, though this adds complexity and may affect read/write speed.
+Pickled data can be compressed using modules like gzip to save disk space.
+Compression reduces file size but may slow down read/write operations.
+Combining pickling and compression is useful for large data objects.
+Multiple compression modules exist, each with different strengths and use cases.
+Learning Approach and AI Assistance
+In response to a participant's question, the speaker advises focusing on conceptual understanding rather than memorizing details, emphasizing the use of AI and online resources for coding assistance. He encourages developing vocabulary to effectively query AI tools and highlights the role of AI in code generation, review, and refactoring.
+Pete Behague recommends grasping concepts over memorizing syntax.
+He encourages using AI tools and online resources to find coding solutions.
+Developing a vocabulary to ask precise questions improves AI assistance effectiveness.
+AI can generate, review, and refactor code, aiding learning and development.
+Becoming proficient takes time; the course aims to build foundational understanding.
+
+0:03 : Pete Behague : And it's being transcribed and summarized, did you hear that? You wouldn't have heard that. In my head for or you did hear that. There we go. So we now know that's going on. Excellent.
+0:13 : Pete Behague : Ah.
+0:17 : Pete Behague : Let's go and think about data storage and file handling.
+0:22 : Pete Behague : There are, you know, situations where we definitely want to be retrieving data from files, putting data into files reading or writing to and from files, it's kind of a useful thing to want to do. And we'll think about how to do that with text files. We'll think about how to do that with binary or bytes of information.
+0:41 : Pete Behague : We'll think about how we can read and write to standard streams.
+0:46 : Pete Behague : Because we, we create streams of data. That's quite a good analogy, it's quite a good word to use.
+0:53 : Pete Behague : Because we have a source for our data and it's going to some kind of destination just like streams that bubble up on the mountainside and go down the hill and get to some kind of destination, the city typically.
+1:09 : Pete Behague : We'll also briefly think about pickling things, that's not that onions and and cue cumbers. Although the analogy is actually really good. And shelving things.
+1:23 : Pete Behague : You might have a pantry full of pickle things and that will be deemed to be a shelf so you can, you can pickle multiple things at the same time using a shelf.
+1:35 : Pete Behague : And we'll briefly think about compression techniques, so can we zip up the contents of our files to save space? The answer is yes, we can.
+1:46 : Pete Behague : So how do we interact with files? Well, we open, to read them and to write to them potentially, and then we really ought to think about closing them. Python's actually pretty good at tidying up after itself, but you can guarantee the one time you.
+2:06 : Pete Behague : Forget to do it badness will happen, and it's kind of good to make sure you've written some code that if ah some kind of object was opened, and it supports some kind of way of closing it, we should make sure that losing happens. All right? The danger.
+2:26 : Pete Behague : If you open a file.
+2:29 : Pete Behague : And start using it, you're locking access to anybody else. You've locked the file so your code can use it, nobody else can touch it. That's fine if it's your local laptop, no one's gonna want to touch it. But if you're going across a network to a centralized location and you've opened a file.
+2:49 : Pete Behague : To read from it or or write to it, and you are stopping other people from doing the same. If you close the file, then other people can then grab it and open it.
+3:01 : Pete Behague : If you forget to close the file, there's a danger that you hog that file, for a significant period of time and you kind of make it unusable and everybody else's programs are falling over left right and center. We can sequentially read and write to and from files. We can, and the term is randomly read and write.
+3:22 : Pete Behague : From files. If it was truly random, it would be pretty useless why do i wanna read and write randomly to a file, but we'll, we'll get there and explain what random really means shortly.
+3:37 : Pete Behague : Here's how you open the file. Here's one way you can open the file. We've got an open function. We don't even need to import anything. This is such a fundamental thing to want to do. It's part of the Python language. So open file name that's your string as a path to where the file exists. So C colon backs.
+3:58 : Pete Behague : Backslash that back slash the other my file dot txt. There's loads of backstashes kicking about, so you either treat that as a raw text string or you put double backslashes in it or something to make sure that, you know, it's not picked up as escape characters. You can speci.
+4:19 : Pete Behague : By default, you open for reading, but you could also open for writing with the W You could open for appending with an A, appending means I don't want to overwrite what's in the file, I want to add things to the end of it. By default, if I write.
+4:39 : Pete Behague : Open a file for right access, I will create a whole new file or I'll overwrite an existing file, which might not be what you want. So you have to be careful about these things.
+4:52 : Pete Behague : There are other options where you can open files for reading and writing.
+4:58 : Pete Behague : So adding two and from it, within our plus, you can open a file to create and truncate. You can open a file to create and append. So these are all options available to us. We can specify this buffer size. Remember we talked about buffering.
+5:18 : Pete Behague : And, and, toilet systems yesterday and all that kind of stuff. Well, if we're reading and writing to a file, then the text we write.
+5:27 : Pete Behague : Doesn't necessarily go straight to the physical file, it'll be put into a buffer and when the buffer gets full, it'll get flushed automatically or we could actually explicitly flush it, which means that as soon as you write, we can make sure the stuff's in the underlying file. And so we can have a switch to say whether we are buffering or.
+5:47 : Pete Behague : The buffering size is going to be. My minus one means it's just gonna default, but we could put some numbers in there to say this is the kind of amount of stuff we're gonna push. Typically it's a multiple of two, which is why we've got these strange numbers.
+6:03 : Pete Behague : You can specify some form of encoding more like that later on, you could specify some kind of error handling.
+6:12 : Pete Behague : Another bits and pieces. You could say when you write to the file, do you want to.
+6:18 : Pete Behague : Implicitly include a new line character, all sorts of exciting switches you could apply to these things. Nav said.
+6:28 : Pete Behague : Usually you don't use any of those switches at all. You just go open whatever my file name is called and potentially the path that file name, and you'll say I want to read the file for text access. That's the default. So you don't need these two things at all. You can just say open the file name, closed round bracket. But the rtm.
+6:49 : Pete Behague : I'm reading and I'm reading a text file rather than a bind rather than a binary file.
+6:56 : Pete Behague : How do I retrieve data from that file? While I invoke the read method? The read method comes in a couple of flavors. I could put a number inside there and that's the number of.
+7:10 : Pete Behague : Characters, if it's a text file or bytes, if it's a binary file, I'd like to read in with that grab, ok?
+7:21 : Pete Behague : If there's no number in the brackets, then it will read in the entire file.
+7:29 : Pete Behague : Which sounds like fun, and it is if the file isn't too big, but if this was an enormous file and you guys are dealing with a huge file sometimes, reading in the entire file, you might have memory problems, it might be the file is too big for the memory space allocated to your.
+7:49 : Pete Behague : And it might go all sorts of super weird on you. So it's slightly dangerous to read the entire file in unless you kind of know clearly that it's small enough to, to cater for. If you read in forty two characters, the net and that was in the loop, the next time you said read forty.
+8:09 : Pete Behague : Characters didn't you'd be reading the next forty two characters after ones you just read in. So you would be making progress through the file, but reading a chunk in at a time. Make sense?
+8:24 : Pete Behague : You've got a read line method that's pre supposing, you've got a textual file, and in that text file, there are some new line characters.
+8:35 : Pete Behague : Because it's gonna read in till it comes across a backslash N inside that file. Backslash N is the classic new line character and it will read in one lines with the stuff and that's, you know, it could be this long, it could be that long, just depends on where the new line characters are. Is that cool?
+8:56 : Pete Behague : So what we could do here is in that slideshow, we could go to.
+9:09 : Pete Behague : We could look at.
+9:14 : Pete Behague : Demos and we could go to.
+9:18 : Pete Behague : File access. Here we go.
+9:21 : Pete Behague : So I've got a file here called shakespearing quotes dot txt, and there's five famous shapes bearing quotes. All on separate lines, so this is a text file, there are definitely new line characters down here, because there are, go back to file read.
+9:42 : Pete Behague : I'm opening the file for read access. That's default I could have said read of a text file, that's default, I didn't need either of those two things if it didn't want to. And I am reading in the first line. And then I'm reading in the next slide, and then I'm reading in the rest of the.
+10:04 : Pete Behague : And if I then try and read another line in, it'll go, you're at the end of the file, so there's nothing to read. And then I remember to close the file because I don't want to leave it open just in case. Python's actually very good at closing things, if it, if, if you.
+10:22 : Pete Behague : To the end of the running code, it will close the file anyway, but it's best practice to be explicit about these things. Okay, if I ran that therefore, actually if we set a break point here in debugged it, you can see much more clearly what's going on. We hit the break point, we do a step over step.
+10:44 : Pete Behague : Print what's in the, what the readline returns for me, and into the console, it will have written.
+10:53 : Pete Behague : Possibly.
+10:55 : Pete Behague : There it is. First line to be or not to be that is the question. See that? If I carry on stepping through the code, it pumps out the next message.
+11:06 : Pete Behague : And it should have written that out somewhere.
+11:11 : Pete Behague : This window's being a bit.
+11:14 : Pete Behague : Annoying, but there it is, there's the second line being read out. Now we're reading the entire file and writing the rest of it without the member there's three more lines. So if I do a step over, step over, we can see that it's about to print out what the rest of the file, it should have done that down here.
+11:36 : Pete Behague : Come on.
+11:38 : Pete Behague : Should have done that.
+11:41 : Pete Behague : In fact, it's done it.
+11:43 : Pete Behague : The debugger sometimes does things in the wrong sequence, that is the rest of the file, but it printed that out in the debugger before it prints out the rest of the file. Probably a buffering problem to be honest, but it's, it's done that. And then we do readline again, there's nothing to read too, it doesn't do anything.
+12:04 : Pete Behague : And we close the file, and so the output is kind of essentially what you wanted to set that's slightly out of the sequence and that's just the, that's just the debugger being a bit funny. If I ran that completely, you can see that it actually genuinely prints rest the file and then the rest of the file out before it gets to the blank line, so it would do it correct.
+12:24 : Pete Behague : Correctly.
+12:26 : Pete Behague : Most of the time.
+12:35 : Pete Behague : Some reading tricks, they're not that sophisticated.
+12:39 : Pete Behague : We can read in the entire file, spin there, done that already. We can read in the entire file, and split the lines that we get so that will be a list of lines.
+12:57 : Pete Behague : Which is quite a neat thing to do. You can actually do that in one line with one instruction, so this is effectively the same as this. That will be a list of lines as well. By using read lines rather than read line in the singular.
+13:17 : Pete Behague : You can also put a for loop where you, after the inn you specify the file you want to read from, by default it will read and its text, right? But you could specify that it's explicitly, and you can say read lines, and that again will then iterate around each line.
+13:37 : Pete Behague : In turn reading one line at in a time and then you can print out what it's achieves. Notice that the print statement.
+13:47 : Pete Behague : Prints the line that is retrieved. The line that it's retrieved has got a new line character on the end of it here, here, here and here. So if I do a print statement.
+14:00 : Pete Behague : Print statement typically puts a new line character onto the end of everything it prints and you'll get double space in because you're reading the new line character from the file and then you're adding another new line character because the print statement does that, double spacing, so if you don't want double spacing.
+14:16 : Pete Behague : You specify for the print statement, don't give me a new line character, right? When you get double spacing, you do this double check going, what the heck's going on here and then you kind of think about what's going on and you realize that's what's going on.
+14:33 : Pete Behague : Rather than calling read lines, you can just say for each line in this file and it will give you one line at a time. So, you know, this and this are actually analogous. In fact, this is more efficient than doing this. This is a bit clumpier than this pure approach.
+14:52 : Pete Behague : I both work in the same kind of way, and now remember each of those times I should have been closing the file, and none of those things are closing it. We gotta way with it because Python's quite good at letting us get away with it. If I'm worried about leaving the thing open, rather than explicitly remembering.
+15:14 : Pete Behague : My file dot close, I can use the width operator. Changes the syntax of the open statement slightly because we say with this open file as and I want to call that file.
+15:31 : Pete Behague : In file so that I can for each around that file. So rather than saying four, open the file for me, I can say, explicitly open the file for me, call it that, iterate around it. And because of all of this is indented.
+15:49 : Pete Behague : When we get to the line of code that's not indented, it will guarantee closure. So I don't have to remember to close the file. This because i'm using the with operator will take the file and close it as soon as we stop the indented logic, as soon as we move on from the indented logic, so it's quite a nice thing to do.
+16:09 : Pete Behague : Because it takes the burden away from us and and and manages that for you. So this is a really, really good piece of code, actively encouraged to use that in all situations.
+16:23 : Pete Behague : This code is actually analogous to this code. This is error handling in actual fact, but we're not actually handling errors, but we we're using the keywords that would do that kind of thing for us. It's perfectly possible to put code into a try block. We'll do this stuff in more detail later on.
+16:43 : Pete Behague : In the course. And, you can have a finding block. Now the finally block is guaranteed to run when all the code in the try works or even fails. So if an error occurs, the code in file is gonna happen no matter what. So we open the file up here, we.
+17:04 : Pete Behague : Use it, and in the finally block, we explicitly close the file. That a hundred percent guarantees that if we enter the try block and anything happens by whatever errors or goodness or whatever, we will not leave this code until that has run. So it guarantees closure.
+17:25 : Pete Behague : And so this code actually is shorthand for this code. We don't have to worry about remembering the tries and final is the width operator generates those for us, right? Without us having to worry about what's going on. All you need to remember is with guarantees closure of the file.
+17:45 : Pete Behague : How does it do that through trifiles? We'll understand more about try final is later on the course. Boom boom. Happy? It's static pete. Move on File right. Can I write to? Yes I can. How do I do that? I open it with a W here. W for right. Re.
+18:05 : Pete Behague : Member right will overwrite existing files, right? So we are writing to O three file right, which is this file here that currently already exists. Okay, it currently contains this information.
+18:23 : Pete Behague : Okay.
+18:26 : Pete Behague : If I ran this code to this break point, what I'm doing is opening if I to write to it, I am generating numbers from one and ten. I'm creating a string that says this is line one, two, three, four, five, two, seven, nine ten with the new line character, and I'm writing that to the file.
+18:46 : Pete Behague : And then flushing what I've just written to every line I write, I flush.
+18:52 : Pete Behague : That's bad practice, but it means it will be easily be able to see what's going on as we write to the file. Once we get to the end of this, I close it I could have done that in a width block and I wouldn't have to remember to close it.
+19:05 : Pete Behague : Okay, if I run or debug to this break point, what we should see is what this file currently contains will be blatted out and replaced with the numbers one through to nine or ten. Yeah, to ten. So debug, it's done all that stuff, hits this.
+19:26 : Pete Behague : Break point. What's in this file? The numbers one to ten. All right? Happy with that?
+19:35 : Pete Behague : So that's cool. We are then going to open the file again, but we're gonna append to it. Appending means we won't blat out what's in the file. We'll add some nice new stuff to it. We've got very similar code, except we're going numbers twelve to.
+19:59 : Pete Behague : And choosing not to flash, but as soon as I close the file, flushing will take place, right? Automatically. So if I step through this a bit.
+20:13 : Pete Behague : Strong possibility that those lines of text won't have ended up inside this file yet cause I haven't flushed them.
+20:23 : Pete Behague : But if I ran down to here.
+20:29 : Pete Behague : I still haven't flushed them. I'm closing the file now, bang, I would have flushed them and all those other lines turn up. Okay.
+20:43 : Pete Behague : Now I open the file again to write to it. This will blat out the existing content and replace it with all this stuff, which we'd the lines twenty one to thirty, and I'll have lost all this valuable information.
+20:59 : Pete Behague : When I run this code. So if I run this to a conclusion.
+21:05 : Pete Behague : We are again not flashing until we get to far closed, so if I run to that point.
+21:13 : Pete Behague : File is empty. I've opened it to right to it. It already exists as a file, I empty it at the time I open it. I haven't actually flushed my data. That'll happen when I closed the file, bang, bang, now it contains those numbers that text. Is that ok? So, we have to be careful how you open the file for.
+21:34 : Pete Behague : Right or for append cause otherwise you'll lose all your valuable data if you're not careful about that. Okay, next thing we can do is work in binary mode. Binary mode especially on, on my windows box with the data I've got to hand isn't very exciting.
+21:55 : Pete Behague : But what you're doing in binary mode is reading and writing bytes rather than characters.
+22:01 : Pete Behague : And my machine, your machines were using Unicode to store information. Unicodes are the two bytes or four bytes worth of memory, and so when I'm reading and writing bytes, I'm it takes me two, bits of information to get one character cause it's unicode, two byte storage.
+22:22 : Pete Behague : I could also open to right, so I can open for right and rather than putting a T here for text, I put a B here for binary. I am opening a file I'm writing to it, closing it, and then I'm opening the same file to read from it by a binary information. What I'm doing.
+22:42 : Pete Behague : I'm taking a conventional string and I'm converting it to.
+22:49 : Pete Behague : A byte array, right?
+22:52 : Pete Behague : You won't see anything terribly exciting. If I debug to this break point.
+22:59 : Pete Behague : And we look and see what's inside NB.
+23:04 : Pete Behague : It tells me that there are thirty things inside of MB, and I'm not sure whether I can actually drill into that or not. It just says there's thirty.
+23:18 : Pete Behague : I I lie. Sorry, idea, that just tells me how many characters it's how many bytes it's written, thirty, thirty bytes worth of stuff. That's what it's written. It's written into this text file, down here.
+23:35 : Pete Behague : But we haven't flushed it yet, so you can't see it.
+23:40 : Pete Behague : Because we haven't closed the file yet.
+23:43 : Pete Behague : In fact, we haven't, what's this doing that's writing to the file. Now we are writing again. This oh so yeah, we're writing that to the file, then we are taking this piece of text and we're encoding that and writing that the file. This is a.
+24:03 : Pete Behague : A binary.
+24:06 : Pete Behague : Collection, so i've converted that string to bytes. Here I've just got a string, there's no B in front of the quotes and so to convert that to bytes, I could encode it. This is kind of explicit.
+24:26 : Pete Behague : Literal stuff. This is dynamically doing the conversion. And I put some new line characters and some characterage return characters inside there as well. So if you step through here, and look at what's going on here, we've written another line to the file, but the file is still empty because I haven't flushed it. I.
+24:46 : Pete Behague : Then closed the file which will do the flushing, and what does it contain? Well, very disappointingly what looks like textual characters because this thing is interpreting those two bytes pairs that we've written and going, oh, their characters, so I'll, I'll I'll display them too as characters. You don't see the visual difference.
+25:07 : Pete Behague : I'm not very easily. I think if I went specifically to the file.
+25:17 : Pete Behague : In my demo code, which will be down here somewhere.
+25:25 : Pete Behague : Actually, is this in yeah this is the right file.
+25:38 : Pete Behague : No, that's it, don't know.
+25:42 : Pete Behague : And to be honest I don't know where this file is actually being written to, so where have we opened it from.
+25:53 : Pete Behague : It's just local to this folder, so I, I I I don't it's it's not that exciting, right? It's it really isn't very exciting. The observation is is quite difficult when you're in this idea and looking at textual files that trying to look at the bytes of them is quite difficult to see the bytes version of them and it's it's you just have to take our word for it. And then we can.
+26:13 : Pete Behague : Read in the bytes and we can print them to the console.
+26:17 : Pete Behague : Which again won't be very exciting because it just turns up as the text that we wrote out. So there's no great shakes. I can't get very excited about reading and writing bytes, but sometimes it's it is it is kind of important to do that kind of a thing.
+26:34 : Pete Behague : It's possible to.
+26:36 : Pete Behague : Change what we read and write to. So there's something called the standard output and the standard input, and we can kind of change what the standard output and the standard input is, but by default the standard output is the console and the standard input is the, the console, so I can do.
+26:57 : Pete Behague : Read lines rather than using the input function, I can use standard input and I can use file access notation, but I'm actually reading stuff from the console and writing stuff to the console.
+27:10 : Pete Behague : And so basically the the console is something you stream data to in the same way as you stream data to and from files, and actually behind the scenes, we're doing exactly the same thing. It's just that the stream ends up in a different location.
+27:27 : Pete Behague : And that's kind of all I really need to say about that. I go practice that if it sounds exciting to you. It is possible to explicitly lock files when you read them and write to them and say what other people can do once you've got that file open.
+27:46 : Pete Behague : And, you, that this is obviously very much Windows specific stuff. If you're using a different operating system, then it all better off as to what you actually do in those operating systems. So you can explicitly say I am reading that file and I don't want anybody to edit it while I've got it open.
+28:04 : Pete Behague : So I'm gonna lock it until I finish with it. And so if you've locked it, you also at some point, probably need to, well you you close the file of the lottery released. I think that's going a bit further than the actual exercise guide and and the the the slides go, but that.
+28:25 : Pete Behague : That's kind of interesting to us.
+28:31 : Pete Behague : And I think actually, there's not a huge amount more that we need. Oh no, that's not true. That's, i lie. All right. I completely lie to you. We pretty much ticked everything off apart from one random access.
+28:46 : Pete Behague : Alright? Now the other thing to say about random access is it's not random, right? What it really means is I've structured my data.
+28:57 : Pete Behague : So I understand.
+28:59 : Pete Behague : Where one piece of information starts and finishes in the next piece starts and finishes. So in this example, I'm looking at file called country dot txt.
+29:12 : Pete Behague : Each row is got a different length because now my countries and their continents kind of vary in size. So it's difficult to come up with something that says, well, I know where to find the continent given a country because the continent starts in slightly different locations on a given line.
+29:34 : Pete Behague : I could design the file.
+29:37 : Pete Behague : So that I line everything up neatly.
+29:42 : Pete Behague : In this kind of format.
+29:45 : Pete Behague : Whoops, that should go over there as well. And that means I've got to kind of things turning up in particular columns within every row. Every, the continent starts in column number, whatever that is fifteen in every row that we've got across great Britain screws the thing up completely I could even further to the right. So I can have a.
+30:05 : Pete Behague : Fixed size file and that means I know that each row has got a kind of a fixed length to it and I know where each piece of data in each column starts. So I can do the maths for that. Does that make sense? And that means I can find out the continent for France by going to the first row and the.
+30:26 : Pete Behague : Let's say the fifteenth column. For Germany, I go to the second row, but I still go to the fifteenth column, but Canada, I do the same, yeah? So I can do some maths and work out where things are. If I made these also fixed in length by filling them with spaces, then I kind of know that.
+30:46 : Pete Behague : This is, let's say forty characters long, and therefore I know that this is in position forty one. That's another forty characters long, so I know that's in position sixty one. Eighty one. Does that make sense? So I can now do maths and say I want to get, you know, to the fifth row and the con.
+31:07 : Pete Behague : On the fifth row, and I just multiply.
+31:13 : Pete Behague : Four by.
+31:14 : Pete Behague : Forty and add.
+31:17 : Pete Behague : Twenty or fifteen, whatever the number is to work out exactly where that is. And random access isn't random, it's you doing calculations behind the scenes to say, I know where that data is and it's here I'm gonna find it there bang. Does that make sense?
+31:33 : Pete Behague : So it's not random. Random will be crazy. Dive in there randomly and pick a piece of data. No, but it looks from the outside world's perspective that you're darting into here or darting into there or darting into somewhere else. And it kind of looks a bit random, but behind the scenes you're doing it in a very controlled and and.
+31:54 : Pete Behague : And managed way. I've gotta get this all back to how it works, otherwise we're gonna go nowhere with it. Okay, there's an alternative taste to that.
+32:06 : Pete Behague : Which is what this code does. It reads every line in in turn.
+32:11 : Pete Behague : And it splits each line into fields, so we've got in zero, we've got the country name and in position one, we've got the continent. And we are creating a dictionary with all that information in it.
+32:31 : Pete Behague : And then we're doing these two interesting things here, right? When I am doing random access, I've got a function that will tell me the current position of the cursor. So let's say we've read two or three lines in already.
+32:51 : Pete Behague : So we've read that in and we're kind of down here. Tel will tell me where the cursor is. So i've read these three lines in, the cursor will be here. Tell will say we are now.
+33:03 : Pete Behague : Sixty characters into the file. Or but because these are kind of very in size, that might have been twenty one characters, that might be twenty five characters, that might be thirty characters. It'll have done the maths and worked out that we are now in position.
+33:19 : Pete Behague : Seventy one or whatever the maths actually equates to, right? So tell says this is where we currently are. That means that I can store where we currently are away in my special dictionary. So this is the.
+33:41 : Pete Behague : The country name.
+33:43 : Pete Behague : And I know where the country name exists, but I'm also doing a bit of a calculation to say, now how long was the line? So I can work out kind of where we are in that and kind of work out where new line characters are and bits and pieces. So I've created this index, and if I run to this break point, we can.
+34:03 : Pete Behague : See what it contains.
+34:08 : Pete Behague : Bang, and you can see it says Brazil, a hundred and two. Canada thirty one China fifty three. France zero, right? If you go back to the underlying file, France starts in position zero.
+34:24 : Pete Behague : Alright?
+34:27 : Pete Behague : Germany starts in position fifteen, so you do the math, that's fifteen characters long, so that's position fifteen. Right, Canada is probably another fifteen, sixteen characters on from that, so probably thirty one. Canada is in thirty one.
+34:47 : Pete Behague : Right, it's calculated the start address of all these bits and pieces in this dictionary. That's what it's stored away. So then I can say please give me the name of the country and I could type in China, and it says go and put China into the dictionary and it'll bring you back a number.
+35:07 : Pete Behague : Fifty three. Seek. So just like tell, seek says, I go to this position in the file. Offset from the start by default, offset from the start of file. So go fifty three characters into the file and bring me back.
+35:24 : Pete Behague : What you find there. Seek actually doesn't bring anything back. I lie, it positions the cursor. If I do a read line, it's gonna read the line that starts on line fifty or position fifty three, and that unsurprisingly, is all of that stuff that is just read in, what that one.
+35:46 : Pete Behague : And that means I can.
+35:49 : Pete Behague : Decode what I've just reading because we're doing binary access, and I can write out the entire line's details and the entire line's details should be I'm trying to do a step over and it's decided to dial me completely. Let me just set a break point here and rerun that code.
+36:16 : Pete Behague : Or just watch it die and do something very bizarre. Oh no, it's biting of course he's waiting for me to type in the country. I was type in China.
+36:25 : Pete Behague : And it comes back and is written to the console.
+36:30 : Pete Behague : All the details about China. So this isn't even a fixed length file structure, but we've still worked out mathematically the start location of each of these starts of these lines, and therefore are given a country name, we could plug that into the dictionary and find.
+36:50 : Pete Behague : Out where the details reside in the file. That's random access. It's not random. There's lots of maths behind the scenes to get you to particular locations. Does that make sense? All right.
+37:01 : Pete Behague : Can be quite useful, for obvious obvious reasons, it's kind of like you're creating your own sort of index structure. Okay, next thing to think about is pickling. Let me go through the slide deck and find the pickling section, which is somewhere around about here.
+37:23 : Pete Behague : And, go from the current slide.
+37:32 : Pete Behague : Now pickling is quite an important thing. I've got, a dictionary here, a complex object, and, it's late in the day, in fact it isn't late in the day, it's nearly four thirty. So, you know, I wanna pack.
+37:53 : Pete Behague : Evening, but I don't want to lose this information that's in the computer's memory, ok? I could do one of two things. I could write that out as a string of text, so I could just open up a file and write this, the contents of think convert that to a string and write it out and would get this written out to the console.
+38:13 : Pete Behague : Ance a lot says Grey and blue because there might be some kind of piece of functionality that converts this into explain English, right? Into text.
+38:26 : Pete Behague : When I retrieve that from the file, next day to recreate this dictionary, it's gonna be quite hard for me to do that because I don't really understand the structure of this data to be able to recreate the dictionary and it's not in the dictionary format that I need.
+38:43 : Pete Behague : So I've got to do some work with this saved text when I go live the next day to recreate this dictionary. Wouldn't it be great if I could just persist the dictionary as is to the file system so the next day I just read in that object and it's instantly.
+39:04 : Pete Behague : The same dictionary. We find this when machines go to sleep, if I shut them down and restart I want to pick up from where I was, it's quite a common thing to want to do. And in Python it's known as pickling. Right, and you do pickling.
+39:25 : Pete Behague : Like this. It's actually quite easy. There's a library, import pickle.
+39:30 : Pete Behague : Here's a complex object and then what I do is I.
+39:37 : Pete Behague : Open a file, the data, the extension type for pickle files is typically dot P P for pickle, writing to it and it's gotta be binary. You can only use binary for pickling. So this is just an open file. There's been opened to overwrite what's already in there. And then I go to my pickle object.
+39:57 : Pete Behague : And I call its dump method. Dump this thing to the file system in its entirety. You, you spell out the thing you want to dump to this is this complex object and this is the file you want to dump it to, and then you can close.
+40:13 : Pete Behague : The pickle class.
+40:17 : Pete Behague : The pickle file, ok?
+40:20 : Pete Behague : And the effect of doing all of that is in our code here, we're doing, it's not the same, but we're writing to movies dot P and we're writing a dictionary where the keys are strings and the values are listed. So it's a complex object, and I am.
+40:41 : Pete Behague : Dumping I'm opening that.
+40:44 : Pete Behague : And I am writing out to that file. I'm dumping its content. There are some switches which could say what kind of pickling do I want to do, because as you might expect, not, there's a history of Picklink because Picklink is all about kind of compressing stuff as well as.
+41:04 : Pete Behague : Defining the best way of doing these things. There's a number of protocols that we could may use. We could pickle using Ascii, we could pickle using binary space efficient, we could just go for the default protocol, whatever that might be. Or we can go for the highest protocol, which means it would be the most condensed, but it would be the slowest to read. So you pays your money and takes your cho.
+41:26 : Pete Behague : We're just going for default pickling, and we're gonna close the file. So I'm gonna run to this break point here.
+41:37 : Pete Behague : And it should hit this break point and we're trying to pickle two movies dot P, which is this file here. I open that up.
+41:45 : Pete Behague : It's full of gobbly google because it's condensed stuff, ok? We're not meant to read pickle files and make sense of them. Though you'll notice that the bits of text do pop up inside of here. Right, it's just because text strings tend to turn up in these things in clear text, but it's not.
+42:06 : Pete Behague : Designed for human convention. That's not what you're meant to do with it. Thank goodness.
+42:12 : Pete Behague : But if I want to retrieve the stuff having dumped it to the next day, we open the file to read binary from it.
+42:22 : Pete Behague : And we.
+42:24 : Pete Behague : Specify pickle dot load, and we take our file handle and we are load link load link, we're loading that thing into a variable. This piece of code here is actually not necessary. Neither are the brackets, it will work just fine, ok?
+42:45 : Pete Behague : If I stopped that and started it and ran it to this break point.
+42:53 : Pete Behague : We should see that it gets to here quite happily and you can see what it's actually got. It's got.
+43:01 : Pete Behague : A dictionary dicted with all of these bits and pieces. These keys and these values. It sounded the same as auto four, so it's actually read the dictionary in and I've got a dictionary without having to work to actually manage that thing. All right? So picking is about preserving data when the app goes to sleep or the, the computer.
+43:22 : Pete Behague : Goes to sleep or whatever and it wakes up and it can remember stuff from where it was at, ok?
+43:29 : Pete Behague : And here we're just printing this stuff out to prove to you that it kind of worked.
+43:35 : Pete Behague : Shelving big finally. Shelving is the same as pickling, but it does multiple objects at the same time. So I've got three dictionaries. One dictionary of somebody's favorite movies, another one, their favorite TV programs, another one their favorite.
+43:55 : Pete Behague : Music, right? And they're all being used at the same time in our program and we want to go to bed. So what do we do? We go to the imported.
+44:07 : Pete Behague : Shelf library.
+44:10 : Pete Behague : And we go, I wanna open a shelf, please, here's what I want to call the shelf, it's just a file name. I'm calling it dot DB, call it V like really, and, that.
+44:27 : Pete Behague : Will then be open, and then I can use.
+44:32 : Pete Behague : Well guys tell me what that looks like to you. What is this bit here look incredibly light to you? Something we've already played around with.
+44:45 : Pete Behague : That notation square brackets, things in quotes inside those square brackets.
+44:51 : Uwais : You know.
+44:52 : Pete Behague : Yeah it looks like a dictionary. Guess what, guys? Shelf is just a dictionary for pickled objects. So we can, we can pickle three things at the same time. It's just a dictionary, but these aren't pickled objects, these are the original objects and it's gonna do the pickling for us, right? So go and shove that on a shelf, go and shove that on the shelf, and you're shoving on the shelf with a key.
+45:13 : Pete Behague : So that when you close the thing and shut the program down and then reopen it, you point at that file, and you can.
+45:24 : Pete Behague : In this case, we're just iterating around the thing that we've just retrieved, right? So we are iterating around this DB thing pulling one thing in at a time, and there's three things to pull in. These three keys.
+45:40 : Pete Behague : So I'm getting a key and I'm printing out what the keys are, and then I'm saying please.
+45:47 : Pete Behague : Pick a key, any key, I convert whatever they type into lowercase and I plug the key into the.
+45:57 : Pete Behague : Dictionary that we've just returned, the dictionary of dictionaries, and it will then print out to me the contents of that particular.
+46:06 : Pete Behague : Shelved object. So if I was to run that in all its entirety, it says, ok, we can talk about movies TV or music. What do you want TV cause it's quick to time. And there's Donald Miraz and Sarah's favorite TV programs. We've just dumped the entire dictionary.
+46:26 : Pete Behague : To the console, and then it says, well, do you want another one? I go yes, please music. And that's all the music that we pickled. All right, and so on and so forth. So pickling and shelving, is a little bit niche, it's a bit specialist, you know, you don't do any of these every day all day but there are certain applications where, you know.
+46:47 : Pete Behague : You are using them all day, every day, and when the computer goes to sleep, you wanna persist this stuff or when you shut the computer down you want to persist this stuff. And pickling means that when you retrieve this stuff, you don't have to work out what kind of object it was, it becomes that object automatically. Right, which is the important thing. It's comes back as a dictionary.
+47:08 : Pete Behague : And that I think genuinely.
+47:12 : Pete Behague : Takes you.
+47:14 : Pete Behague : Essentially to the Oh no actually it's one other thing. Well, just quickly I'm not gonna demonstrate it to you. Guess what? You can compress things. So you can come across zipping things up. Well, there are things you can import like G Zip, so you can.
+47:33 : Pete Behague : It's not the same as it's doing the similar kind of thing to when you zip things up, but it's just using a different technique, different compression program. There's loads of different compression programs out there. So GSIP is just one of them, and you can say go and give me, open a file for writing too, and I'm gonna write to it, not conventionally, I'm gonna w.
+47:54 : Pete Behague : Right through this G zip stream, so I'll write plain text at it or plain binary stuff at it and it will compress it for me. And write that compressed status of the file.
+48:07 : Pete Behague : Then I can open it to read it back in again if I wanted to, and it will decompress it. And in this example, we're also just because you can, not just decompressing it as a simple file, we are also doing some pickling along the way. So we are pickling something and compressing that pickle.
+48:27 : Pete Behague : Object, and we are retrieving that pickled object and unpickling it because you can do these things if you want to, right? It's kind of thing where you think I've I'm never gonna remember how to do that, but there are situations where this is a big object is taken up lots of memory on my hard drive I'd like to compress it. Can I.
+48:47 : Pete Behague : And compress it at the same time? I, can I, sorry, pickle and compress at the same time? Yes, I can. How do I do that? Google AI come to the notes, whatever. Is that cool?
+49:03 : Pete Behague : And there are the compression modules as well it's not just G ZIP, you've got said all these, these similar things, ok?
+49:11 : Pete Behague : Find the one you like the best and go for it. Are they kind of have their strengths and weaknesses? I'm not an expert in that area at all. One's called tape archive. So you can see how all that is, this goes back into the days of taping things, but people still use terraforms, absolutely. It's the compression technique rather than kind of what, what it used to be used for that's.
+49:34 : Pete Behague : And that does take us into that session. Primes us for an exercise for tomorrow morning, first thing, which is No thing.
+49:43 : Pete Behague : Are there any questions from any of you.
+49:46 : Pete Behague : Before we wrap up for the day?
+49:50 : Pete Behague : Sorry I've overrun by five minutes. Do feel free to hang around and finish off anything that you didn't manage to finish off earlier. By tomorrow morning I'll have taken that that all that work has been done by you and we can go straight into this thing, the exercise for this.
+50:10 : Pete Behague : Happy, do hang around and ask questions but when you've had enough, I can't understand.
+50:17 : Pete Behague : Go away and lie down in a darken room with a cold to flat on your heads and I'll see you back here tomorrow morning. Nine thirty.
+50:28 : Pete Behague : Cool.
+50:30 : Pete Behague : Do whatever you want to do. And I'll hang around for as long as you need me to.
+50:35 : Emma Stanton : Thanks Pete.
+50:37 : Jameel Imran : Thank you.
+50:38 : Uwais : Hey.
+50:52 : Aum Kalyan : Sorry Pete, I just had a question.
+50:54 : Pete Behague : Yeah.
+50:57 : Aum Kalyan : I think it's just more in general.
+51:00 : Aum Kalyan : Of course you're delivering a lot of information.
+51:03 : Aum Kalyan : All that once is your like intention for us to just conceptually grasp it and obviously not remember all of the detail and like as he's have you been throwing to AI while I've been using stack overflow, but nowadays go to AI if you've got that problem and if you've got the conceptual understanding, you'll kind of get to the answer. Is that what you're.
+51:24 : Aum Kalyan : Convey to us throughout I guess the course?
+51:27 : Pete Behague : Yes, yeah, yeah, yeah. Yeah.
+51:29 : Aum Kalyan : Makes sense. Okay.
+51:30 : Pete Behague : One of you, you know, you've done some part a lot of people have done some Python stuff at college, but you know, everybody said it wasn't a huge amount and it was all niche in data analysis, which is kind of niche Python. And so I'm throwing loads of stuff at you. You're not seasoned developers. So you're trying to work out.
+51:51 : Pete Behague : How to just work as a developer as well as trying to take on board with this stuff I'm throwing at you. So absolutely bang on. Just take on board the concepts, don't try and worry about the nitty gritty bits of syntax because as you say.
+52:07 : Pete Behague : The loads of resources on the internet that you can go to to help you understand those things if you know the right kind of thing that you're looking for. So it's important to have the concepts, I know you can do that in Python and you've got some kind of vocabulary to try and ask for the thing you're asking for. So, you know, classic one.
+52:28 : Pete Behague : Now is I need to do pickling, AI, show me how to do pickling.
+52:34 : Pete Behague : Because you've got the vacabulary for that, but you have got you've never remember how to do that. I need a regular expression AI tell me how to do a regular expression for this.
+52:44 : Pete Behague : Absolutely. So.
+52:47 : Pete Behague : When you get to the project, you'd have done an AI, a one day AI court. No, two day, I might be one day, AI course, which talks teaches you effectively actually what's called prompting. So knowing the right kind of question to ask with the constraints that you.
+53:08 : Pete Behague : Make sure that AI doesn't kind of twist out and do something stupid that actually gives you specifically what you're asking for. And you can you can get AI to design things for you Structures of things as well as give you underlying code. So one of the skills when you're starting a new project is, well, how's it.
+53:29 : Pete Behague : Gonna be structured? What's the how should this thing look? You can get AI to help you do that. And then once you kind of ascertain that, you can get AI to start developing the sections of the code that is suggested you you go for. And so it is a kind of vibe programming, but.
+53:49 : Pete Behague : It's not vibe coding in the sense that you haven't got a, you know, you you don't want to be writing code where you've got no idea what the code's doing, which is what true vibe coding is, it's a magical website. How wonderful is this?
+54:02 : Pete Behague : I'm super dangerous. What you want is something that spits out code that you then look at and understand and make sense of. Again, just thinking ahead, one of the things you can do with AI is it spits out code at you eventually and you go, AI, look at that code and tell me how good it is. Because.
+54:22 : Pete Behague : AI will set stuff at you and it can it can do it can mark its own homework and it can go, well, actually, it's not very good or actually, you could ask it to refactor the code, make it better and it'll go, Oh yeah I can do that for you. And actually make it the code it produced, it can make it better for you. And those are the kind of things that you'd be.
+54:43 : Pete Behague : Learning how to do in the projects and and and the the course just before that project. So no, we're not expect to spread this news. I'll mention this again tomorrow, but no, don't fret and think by the end of these four days I should be an expert Python development. There's no way you can do that in four days. No way at all. But you'.
+55:03 : Pete Behague : You'll have the concepts in your head. So sorry, it's along within answer to a really.
+55:08 : Aum Kalyan : No, no.
+55:09 : Aum Kalyan : Helpful question.
+55:10 : Pete Behague : Hopefully.
+55:11 : Aum Kalyan : Kind of kind of what I'll not what I was looking for but what I was expecting because I think for me, obviously, I guess it's for any programmer, but I just love to understand the logic and, and why stuff is working and obviously get getting that conceptual overview is important to do that.
+55:32 : Aum Kalyan : But then obviously I'd like to gain to the nitty gritty, but I was just thinking when I was on lunch, I was like considering the time we've got, I don't think I've I can do that so I was like, maybe I stopped the approach I've I've come in with and just.
+55:46 : Pete Behague : No, no, no, no, no. So to a certain extent over up till project one.
+55:55 : Pete Behague : Yes, because project one, you'll have right, so as I understand it, the projects I think you have four days to do it, but three days to actually do the projects and there's one day where you put together a presentation and then in the afternoon you present to managers and interested parties.
+56:15 : Pete Behague : But who who you work with.
+56:18 : Pete Behague : And they are looking for.
+56:24 : Pete Behague : Understanding and kind of the fact that you kind of have made sense of the things that you've been taught. I don't think anybody expects you to be an expert in the things you've been taught because you just haven't got time to.
+56:38 : Pete Behague : Acclimatize any of that stuff. But what you, what, what you say you like doing is absolutely what you should be aiming for in the longer term. So you should, you should be aiming at.
+56:50 : Pete Behague : Understanding what this code's doing to the extent that you feel at some point in your life confident that you could probably.
+57:01 : Pete Behague : Rehash that code or it enhance that code.
+57:07 : Pete Behague : By yourself, right? Or write that code from scratch by yourself. That's what you're ultimately aiming for, but you're not gonna get there in four days. You know, it takes to become a decent developer in any language. It's probably six months of continuous work.
+57:28 : Pete Behague : Within a month or two, you'll be on your standing on YouTube feet, whatever, but you'll be constantly learning new stuff and you'll be constantly going back and reminding yourself stuff. If you do it every day all day for six months, then you'd probably be able to do it without having to look things up too much. But it takes that long to kind of get to that kind of point, that's how I'd see it anyway.
+57:47 : Aum Kalyan : Awesome. Yeah, that was particularly perfect. Yeah.
+57:51 : Pete Behague : No worries. All right.
+57:52 : Aum Kalyan : Books.
+57:54 : Pete Behague : But it done cool. Have a great even.
+57:55 : Aum Kalyan : No worries. You see.
+57:57 : Pete Behague : Tomorrow. I think just take it bye.
+
