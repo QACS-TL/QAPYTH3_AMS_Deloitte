@@ -14,3 +14,14 @@ Recording link: https://qa-learning.webex.com/qa-learning/ldr.php?RCID=c08ceccf8
 Webex meeting recording: Python 3 Programming-20260401 1527-3
 Recording link: https://qa-learning.webex.com/qa-learning/ldr.php?RCID=eb02d4b2000bc791b4a1cab03d132d3c
 
+Accessing SQL Databases
+Webex meeting recording: Python 3 Programming-20260402 1601-1
+Recording link: https://qa-learning.webex.com/qa-learning/ldr.php?RCID=6ebb0b29603aee3e2716d09fd544cdef
+
+11 OOP classes, properties, initialisers
+Webex meeting recording: Python 3 Programming-20260402 1601-2
+Recording link: https://qa-learning.webex.com/qa-learning/ldr.php?RCID=74360a9554f1c7ac4584aa0690fb1899
+
+11 OOP Inheritance, 12 Error Handling & 13 Testing
+Webex meeting recording: Python 3 Programming-20260402 1601-3
+Recording link: https://qa-learning.webex.com/qa-learning/ldr.php?RCID=0e36399cba679eac97bdb5022ff96505
