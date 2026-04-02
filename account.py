@@ -1,51 +1,36 @@
-class Account:
-    numCreated = 0
+class Account():
+    account_number = "00000000"
+    _account_name = "Anon"
+    _balance = 0.00
 
-    def __init__(self, initial):
-        self._balance = initial
-        Account.numCreated += 1
+    def get_account_name(self):
+        return self._account_name
 
+    def set_account_name(self, value):
+        if len(value) < 2:
+            raise ValueError("Account name must be at least 2 characters long")
+        self._account_name = value
 
-    def deposit(self, amt):
-        self._balance += amt
-        return
-
-
-    def withdraw(self, amt):
-        if self._balance - amt < 0:
-            return
-        self._balance -= amt
-        return
-
-    def setbalance(self, amt):
-        if amt < 0:
-            return
-        self._balance = amt
-
-    def getbalance(self):
+    def get_balance(self):
         return self._balance
 
-    balance = property(getbalance, setbalance)
+    def set_balance(self, value):
+        if value < 0:
+            value = 0
+        self._balance = value
 
-    # @property
-    # def balance(self):
-    #     return self._balance
-    #
-    # @balance.setter
-    # def balance(self, amt):
-    #     if amt < 0:
-    #         return
-    #     self._balance = amt
+    balance = property(get_balance, set_balance)
 
-    #balance = property(get_balance, set_balance)
+    def deposit(self, amount):
+        if (amount <= 0):
+            print("value must be positive")
+            return self.balance
+        self.balance += amount
+        return self.balance
 
-
-    def __str__(self):
-        return f"The current balance is {self._balance}"
-
-    # def __len__(self):
-    #     return "3 cm"
-
-    def __add__(self, x):
-        return  self._balance + x._balance
-
+    def withdraw(self, amount):
+        if (amount <= 0 or self.balance < amount):
+            print("value must be positive and less than the current balance")
+            return self.balance
+        self.balance -= amount
+        return self.balance
