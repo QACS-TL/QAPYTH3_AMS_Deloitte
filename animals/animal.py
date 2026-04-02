@@ -1,8 +1,15 @@
-
 class Animal:
-    name = "Anon"
-    colour = "Black"
-    _limb_count = 4
+    # name = "Anon"
+    # colour = "Black"
+    # _limb_count = 4
+
+    def __init__(self, name="Anon", colour="Black", limb_count=4):
+        self.name = name
+        self.colour = colour
+        self.limb_count = limb_count
+
+    def __str__(self):
+        return f"name: {self.name}, colour: {self.colour}, limb_count: {self.limb_count}"
 
     def get_limb_count(self):
         return self._limb_count
