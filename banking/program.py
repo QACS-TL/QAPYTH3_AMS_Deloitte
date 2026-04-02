@@ -1,7 +1,16 @@
+from current_account import Current_account
 from account import Account
 
 acc1 = Account("876543221", "Ted Lasso", 100)
 acc2 = Account()
+cacc = Current_account("876543221", "Ted Lasso", 100, 200)
+print(f"current account balance: {cacc.balance}")
+print(f"current account balance: {cacc.withdraw(300)}")
+try:
+    cacc.withdraw(1)
+except Exception as e:
+    print(e)
+print(f"current account balance: {cacc.balance}")
 
 # acc1.account_number = "876543221"
 # acc1.account_name = "Ted Lasso"
