@@ -1,17 +1,17 @@
-from animal import Animal
+from account import Account
 
-ani1 = Animal()
-ani2 = Animal()
+acc1 = Account()
+acc2 = Account()
 
-ani1.name = "Fifi"
-ani1.colour = "blue"
-ani1.limb_count = -1
-ani1.color = 560
+acc1.account_number = "876543221"
+acc1.account_name = "Ted Lasso"
+acc1.balance = 100
 
-ani2.name = "Fido"
-ani2.colour = "red"
-ani2.limb_count = 5
-print(ani2.limb_count)
+acc2.account_number = "123456789"
+acc2.account_name = "Sadia Salleep"
+acc2.balance = 200
 
-print(ani1.eat("fish"))
-print(ani2.eat("bananas"))
+acc1.deposit(100)
+acc2.deposit(200)
+print(f"Balance of {acc1.account_name} is {acc1.withdraw(150)}")
+print(f"Balance of {acc2.account_name} is {acc2.withdraw(450)}")
